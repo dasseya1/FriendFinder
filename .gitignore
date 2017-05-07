@@ -1,5 +1,12 @@
-# Object file
-*.o
+# dependencies
+node_modules
 
-# Ada Library Information
-*.ali
+# testing
+coverage
+
+# production
+build
+
+# misc
+.DS_Store
+npm-debug.log

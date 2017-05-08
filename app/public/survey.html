@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome glyphicons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Chosen library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <h2>Survey Questions</h2>
+    <hr>
+      <h3><b>About You</b></h3>
+      <h4>Name (Required)</h4>
+      <input type="text" name="username" id="username" class="form-control">
+      <h4>Link to Photo Image (Required)</h4>
+      <input type="text" name="linkforimage" id="linkforimage" class="form-control">
+      <hr>
+  <!-- The questions start here -->
+  <h3><b>Question 1</b></h3>
+  <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+  <select data-placeholder class="chosen-select" id="question_1">
+      <option value></option>
+      <option value="1">1 (Strongly Disagree)</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5 (Strongly Agree)</option>
+  </select>
+ <br>
+ <h3><b>Question 2</b></h3>
+ <h4>Generally speaking, you rely more on your experience than your imagination.</h4>
+ <select data-placeholder class="chosen-select" id="question_2">
+     <option value></option>
+     <option value="1">1 (Strongly Disagree)</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5 (Strongly Agree)</option>
+ </select>
+ <br>
+ <h3><b>Question 3</b></h3>
+ <h4>You find it easy to stay relaxed and focused even when there is some pressure.</h4>
+ <select data-placeholder class="chosen-select" id="question_3">
+     <option value></option>
+     <option value="1">1 (Strongly Disagree)</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5 (Strongly Agree)</option>
+ </select>
+ <br>
+ <h3><b>Question 4</b></h3>
+ <h4>You rarely do something just out of sheer curiosity.</h4>
+ <select data-placeholder class="chosen-select" id="question_4">
+     <option value></option>
+     <option value="1">1 (Strongly Disagree)</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5 (Strongly Agree)</option>
+ </select>
+ <br>
+ <h3><b>Question 5</b></h3>
+ <h4>People can rarely upset you.</h4>
+ <select data-placeholder class="chosen-select" id="question_5">
+     <option value></option>
+     <option value="1">1 (Strongly Disagree)</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5 (Strongly Agree)</option>
+ </select>
+ <br>
+ <h3><b>Question 6</b></h3>
+ <h4>It is often difficult for you to relate to other people’s feelings.</h4>
+ <select data-placeholder class="chosen-select" id="question_6">
+     <option value></option>
+     <option value="1">1 (Strongly Disagree)</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5 (Strongly Agree)</option>
+ </select>
+ <br>
+ <h3><b>Question 7</b></h3>
+ <h4>In a discussion, truth should be more important than people’s sensitivities.</h4>
+ <select data-placeholder class="chosen-select" id="question_7">
+     <option value></option>
+     <option value="1">1 (Strongly Disagree)</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5 (Strongly Agree)</option>
+ </select>
+ <br>
+ <h3><b>Question 8</b></h3>
+ <h4>You rarely get carried away by fantasies and ideas.</h4>
+ <select data-placeholder class="chosen-select" id="question_8">
+     <option value></option>
+     <option value="1">1 (Strongly Disagree)</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5 (Strongly Agree)</option>
+ </select>
+ <br>
+ <h3><b>Question 9</b></h3>
+ <h4>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</h4>
+ <select data-placeholder class="chosen-select" id="question_9">
+     <option value></option>
+     <option value="1">1 (Strongly Disagree)</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5 (Strongly Agree)</option>
+ </select>
+ <br>
+ <h3><b>Question 10</b></h3>
+ <h4>You feel more energetic after spending time with a group of people.</h4>
+ <select data-placeholder class="chosen-select" id="question_10">
+     <option value></option>
+     <option value="1">1 (Strongly Disagree)</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5 (Strongly Agree)</option>
+ </select>
+<br>
+<br>
+<!--Submit button -->
+<button class="btn btn-lg btn-primary btn-block" type="submit" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i> Submit</button>
+<hr>
+
+<!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p><a href="/api/friends">API Friends List</a> | <a href="http://www.github.com/dasseya1/FriendFinder">GitHub Repo</a></p>
+      </div>
+    </footer>
+
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+  <script type="text/javascript">
+               var config = {
+                 '.chosen-select'           : {},
+                 '.chosen-select-deselect'  : {allow_single_deselect:true},
+                 '.chosen-select-no-single' : {disable_search_threshold:10},
+                 '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                 '.chosen-select-width'     : {width:"95%"}
+               }
+               for (var selector in config) {
+                 $(selector).chosen(config[selector]);
+               }
+  </script>
+</body>
+
+</html>

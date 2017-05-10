@@ -27,7 +27,7 @@
   <!-- The questions start here -->
   <h3><b>Question 1</b></h3>
   <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
-  <select data-placeholder class="chosen-select" id="question_1">
+  <select data-placeholder class="chosen-select" id="question_1" required>
       <option value></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -38,7 +38,7 @@
  <br>
  <h3><b>Question 2</b></h3>
  <h4>Generally speaking, you rely more on your experience than your imagination.</h4>
- <select data-placeholder class="chosen-select" id="question_2">
+ <select data-placeholder class="chosen-select" id="question_2" required>
      <option value></option>
      <option value="1">1 (Strongly Disagree)</option>
      <option value="2">2</option>
@@ -49,7 +49,7 @@
  <br>
  <h3><b>Question 3</b></h3>
  <h4>You find it easy to stay relaxed and focused even when there is some pressure.</h4>
- <select data-placeholder class="chosen-select" id="question_3">
+ <select data-placeholder class="chosen-select" id="question_3" required>
      <option value></option>
      <option value="1">1 (Strongly Disagree)</option>
      <option value="2">2</option>
@@ -60,7 +60,7 @@
  <br>
  <h3><b>Question 4</b></h3>
  <h4>You rarely do something just out of sheer curiosity.</h4>
- <select data-placeholder class="chosen-select" id="question_4">
+ <select data-placeholder class="chosen-select" id="question_4" required>
      <option value></option>
      <option value="1">1 (Strongly Disagree)</option>
      <option value="2">2</option>
@@ -71,7 +71,7 @@
  <br>
  <h3><b>Question 5</b></h3>
  <h4>People can rarely upset you.</h4>
- <select data-placeholder class="chosen-select" id="question_5">
+ <select data-placeholder class="chosen-select" id="question_5" required>
      <option value></option>
      <option value="1">1 (Strongly Disagree)</option>
      <option value="2">2</option>
@@ -82,7 +82,7 @@
  <br>
  <h3><b>Question 6</b></h3>
  <h4>It is often difficult for you to relate to other people’s feelings.</h4>
- <select data-placeholder class="chosen-select" id="question_6">
+ <select data-placeholder class="chosen-select" id="question_6" required>
      <option value></option>
      <option value="1">1 (Strongly Disagree)</option>
      <option value="2">2</option>
@@ -93,7 +93,7 @@
  <br>
  <h3><b>Question 7</b></h3>
  <h4>In a discussion, truth should be more important than people’s sensitivities.</h4>
- <select data-placeholder class="chosen-select" id="question_7">
+ <select data-placeholder class="chosen-select" id="question_7" required>
      <option value></option>
      <option value="1">1 (Strongly Disagree)</option>
      <option value="2">2</option>
@@ -104,7 +104,7 @@
  <br>
  <h3><b>Question 8</b></h3>
  <h4>You rarely get carried away by fantasies and ideas.</h4>
- <select data-placeholder class="chosen-select" id="question_8">
+ <select data-placeholder class="chosen-select" id="question_8" required>
      <option value></option>
      <option value="1">1 (Strongly Disagree)</option>
      <option value="2">2</option>
@@ -115,7 +115,7 @@
  <br>
  <h3><b>Question 9</b></h3>
  <h4>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</h4>
- <select data-placeholder class="chosen-select" id="question_9">
+ <select data-placeholder class="chosen-select" id="question_9" required>
      <option value></option>
      <option value="1">1 (Strongly Disagree)</option>
      <option value="2">2</option>
@@ -126,7 +126,7 @@
  <br>
  <h3><b>Question 10</b></h3>
  <h4>You feel more energetic after spending time with a group of people.</h4>
- <select data-placeholder class="chosen-select" id="question_10">
+ <select data-placeholder class="chosen-select" id="question_10" required>
      <option value></option>
      <option value="1">1 (Strongly Disagree)</option>
      <option value="2">2</option>
@@ -162,6 +162,47 @@
                for (var selector in config) {
                  $(selector).chosen(config[selector]);
                }
+
+
+                     $("#submit").on("click", function(event) {
+                       event.preventDefault();
+
+                       // Here we grab the form elements
+                       var newSurvey = {
+                         name: $("#username").val().trim(),
+                         photo: $("#linkforimage").val().trim(),
+                         scores: $("#reserve-email").val().trim(),
+                         customerID: $("#reserve-unique-id").val().trim()
+                       };
+
+                       console.log(newReservation);
+
+                       // This line is the magic. It"s very similar to the standard ajax function we used.
+                       // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+                       // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+                       // depending on if a tables is available or not.
+
+                       $.post("/api/tables", newReservation,
+                         function(data) {
+
+                           // If a table is available... tell user they are booked.
+                           if (data) {
+                             alert("Yay! You are officially booked!");
+                           }
+
+                           // If a table is available... tell user they on the waiting list.
+                           else {
+                             alert("Sorry you are on the wait list");
+                           }
+
+                           // Clear the form when submitting
+                           $("#reserve-name").val("");
+                           $("#reserve-phone").val("");
+                           $("#reserve-email").val("");
+                           $("#reserve-unique-id").val("");
+                         });
+                     });
+
   </script>
 </body>
 

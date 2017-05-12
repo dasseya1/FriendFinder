@@ -148,6 +148,22 @@
     </footer>
 
   </div>
+  
+  <div id="bestFriendModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">X</button>
+				<h2 class="modal-title">Best Match</h2>
+			</div>
+			<div class="modal-body">
+				<h2 id="bestFriendName"></h2>
+				<img id="bestFriendImg" src="src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="Best Friend">
+			</div>
+		</div>
+	</div>
+ </div>
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
@@ -166,40 +182,33 @@
 
                      $("#submit").on("click", function(event) {
                        event.preventDefault();
+                       
 
                        // Here we grab the form elements
                        var newSurvey = {
                          name: $("#username").val().trim(),
                          photo: $("#linkforimage").val().trim(),
-                         scores: $("#reserve-email").val().trim(),
-                         customerID: $("#reserve-unique-id").val().trim()
-                       };
+                         scores: [$("#question_1").val(),
+                             $("#question_2").val(),
+                             $("#question_3").val(),
+                       $("#question_4").val(),
+                       $("#question_5").val(),
+                       $("#question_6").val(),
+                       $("#question_7").val(),
+                       $("#question_8").val(),
+                       $("#question_9").val(),
+                       $("#question_10").val()]
 
-                       console.log(newReservation);
 
-                       // This line is the magic. It"s very similar to the standard ajax function we used.
-                       // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
-                       // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
-                       // depending on if a tables is available or not.
+                };
 
-                       $.post("/api/tables", newReservation,
-                         function(data) {
+  
+                       $.post("/api/friends", newSurvey, function(data) {
+                            
+			$("#bestFriendName").text(data.name);
+			$("#bestFriendImg").attr("src", data.photo);
+			$("#bestFriendModal").modal("show");
 
-                           // If a table is available... tell user they are booked.
-                           if (data) {
-                             alert("Yay! You are officially booked!");
-                           }
-
-                           // If a table is available... tell user they on the waiting list.
-                           else {
-                             alert("Sorry you are on the wait list");
-                           }
-
-                           // Clear the form when submitting
-                           $("#reserve-name").val("");
-                           $("#reserve-phone").val("");
-                           $("#reserve-email").val("");
-                           $("#reserve-unique-id").val("");
                          });
                      });
 
